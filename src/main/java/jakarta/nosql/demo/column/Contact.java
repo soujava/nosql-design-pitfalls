@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Objects;
 
 @Entity
-public class Contact {
+class Contact {
 
     @Id
     private String name;
@@ -49,7 +49,7 @@ public class Contact {
         return Collections.unmodifiableMap(this.details);
     }
 
-    public void add(String label, String info) {
+    public void put(String label, String info) {
         this.details.put(Objects.requireNonNull(label, "label is required"),
                 Objects.requireNonNull(info, "info is required"));
     }
