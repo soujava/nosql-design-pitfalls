@@ -75,6 +75,9 @@ class Car {
                 '}';
     }
 
+    public static CarBuilder builder() {
+        return new CarBuilder();
+    }
 
     public static class CarBuilder {
         private String plate;
