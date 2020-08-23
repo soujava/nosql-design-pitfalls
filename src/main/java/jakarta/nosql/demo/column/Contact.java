@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Entity
 public class Contact {
@@ -46,6 +47,11 @@ public class Contact {
 
     public Map<String, String> getDetails() {
         return Collections.unmodifiableMap(this.details);
+    }
+
+    public void add(String label, String info) {
+        this.details.put(Objects.requireNonNull(label, "label is required"),
+                Objects.requireNonNull(info, "info is required"));
     }
 
     public Address getAddress() {
