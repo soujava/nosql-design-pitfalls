@@ -14,6 +14,8 @@ public class App {
                     .withPostalCode("40235220")
                     .build();
 
+            Order order = new Order(address);
+
 
         }
     }

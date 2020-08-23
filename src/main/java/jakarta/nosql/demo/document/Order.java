@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Entity
 public class Order {
@@ -28,10 +29,12 @@ public class Order {
     Order(Address shipTo) {
         this.shipTo = shipTo;
         this.items = new ArrayList<>();
+        this.orderedAt = LocalDateTime.now();
     }
 
     Order() {
         this.items = new ArrayList<>();
+        this.orderedAt = LocalDateTime.now();
     }
 
     public void add(Product item) {
@@ -39,6 +42,45 @@ public class Order {
     }
 
     public List<Product> getItems() {
-        return items;
+        return items.stream().collect(Collectors.toUnmodifiableList());
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public LocalDateTime getOrderedAt() {
+        return orderedAt;
+    }
+
+    public Address getShipTo() {
+        return shipTo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Order order = (Order) o;
+        return Objects.equals(id, order.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", orderedAt=" + orderedAt +
+                ", items=" + items +
+                ", shipTo=" + shipTo +
+                '}';
     }
 }
