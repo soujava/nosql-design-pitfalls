@@ -6,6 +6,7 @@ import jakarta.nosql.mapping.Id;
 import org.eclipse.jnosql.artemis.cassandra.column.UDT;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +45,7 @@ public class Contact {
     }
 
     public Map<String, String> getDetails() {
-        return details;
+        return Collections.unmodifiableMap(this.details);
     }
 
     public Address getAddress() {

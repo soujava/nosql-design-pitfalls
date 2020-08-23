@@ -7,9 +7,9 @@ import org.bson.types.ObjectId;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Entity
 class Order {
@@ -41,8 +41,8 @@ class Order {
         this.items.add(Objects.requireNonNull(item, "item is required"));
     }
 
-    List<Product> getItems() {
-        return items.stream().collect(Collectors.toUnmodifiableList());
+    public List<Product> getItems() {
+        return Collections.unmodifiableList(this.items);
     }
 
     public ObjectId getId() {
