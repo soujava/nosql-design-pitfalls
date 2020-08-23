@@ -22,4 +22,48 @@ public class Contact {
 
     @UDT("address")
     private Address address;
+
+    Contact() {
+    }
+
+    private Contact(String name, LocalDate birthday, Map<String, String> details, Address address) {
+        this.name = name;
+        this.birthday = birthday;
+        this.details = details;
+        this.address = address;
+    }
+
+    public class ContactBuilder {
+        private String name;
+        private LocalDate birthday;
+        private Map<String, String> details;
+        private Address address;
+
+        private ContactBuilder() {
+        }
+
+        public ContactBuilder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ContactBuilder withBirthday(LocalDate birthday) {
+            this.birthday = birthday;
+            return this;
+        }
+
+        public ContactBuilder withDetails(Map<String, String> details) {
+            this.details = details;
+            return this;
+        }
+
+        public ContactBuilder withAddress(Address address) {
+            this.address = address;
+            return this;
+        }
+
+        public Contact build() {
+            return new Contact(name, birthday, details, address);
+        }
+    }
 }
