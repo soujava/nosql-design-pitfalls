@@ -17,17 +17,13 @@ public class Address {
     @Column
     private String postalCode;
 
-    @Column
-    private String region;
-
     Address() {
     }
 
-    Address(String city, String country, String postalCode, String region) {
+    Address(String city, String country, String postalCode) {
         this.city = city;
         this.country = country;
         this.postalCode = postalCode;
-        this.region = region;
     }
 
     @Override
@@ -41,13 +37,12 @@ public class Address {
         Address address = (Address) o;
         return Objects.equals(city, address.city) &&
                 Objects.equals(country, address.country) &&
-                Objects.equals(postalCode, address.postalCode) &&
-                Objects.equals(region, address.region);
+                Objects.equals(postalCode, address.postalCode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, country, postalCode, region);
+        return Objects.hash(city, country, postalCode);
     }
 
     @Override
@@ -56,7 +51,6 @@ public class Address {
                 "city='" + city + '\'' +
                 ", country='" + country + '\'' +
                 ", postalCode='" + postalCode + '\'' +
-                ", region='" + region + '\'' +
                 '}';
     }
 
@@ -68,7 +62,6 @@ public class Address {
         private String city;
         private String country;
         private String postalCode;
-        private String region;
 
         private AddressBuilder() {
         }
@@ -88,13 +81,9 @@ public class Address {
             return this;
         }
 
-        public AddressBuilder withRegion(String region) {
-            this.region = region;
-            return this;
-        }
 
         public Address build() {
-            return new Address(city, country, postalCode, region);
+            return new Address(city, country, postalCode);
         }
     }
 }
