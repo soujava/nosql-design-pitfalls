@@ -6,6 +6,7 @@ import jakarta.nosql.mapping.Id;
 import org.eclipse.jnosql.artemis.cassandra.column.UDT;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 @Entity
@@ -24,19 +25,39 @@ public class Contact {
     private Address address;
 
     Contact() {
+        this.details = new HashMap<>();
     }
 
-    private Contact(String name, LocalDate birthday, Map<String, String> details, Address address) {
+    private Contact(String name, LocalDate birthday, Address address) {
         this.name = name;
         this.birthday = birthday;
-        this.details = details;
         this.address = address;
+        this.details = new HashMap<>();
     }
 
-    public class ContactBuilder {
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public Map<String, String> getDetails() {
+        return details;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public static ContactBuilder builder() {
+        return new ContactBuilder();
+    }
+
+    public static class ContactBuilder {
         private String name;
         private LocalDate birthday;
-        private Map<String, String> details;
         private Address address;
 
         private ContactBuilder() {
@@ -52,10 +73,6 @@ public class Contact {
             return this;
         }
 
-        public ContactBuilder withDetails(Map<String, String> details) {
-            this.details = details;
-            return this;
-        }
 
         public ContactBuilder withAddress(Address address) {
             this.address = address;
@@ -63,7 +80,7 @@ public class Contact {
         }
 
         public Contact build() {
-            return new Contact(name, birthday, details, address);
+            return new Contact(name, birthday, address);
         }
     }
 }
