@@ -1,12 +1,13 @@
 package jakarta.nosql.demo.column;
 
-import jakarta.nosql.mapping.column.ColumnTemplate;
+import jakarta.nosql.column.ColumnQuery;
 import org.eclipse.jnosql.artemis.cassandra.column.CassandraTemplate;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import java.time.LocalDate;
 
+import static jakarta.nosql.column.ColumnQuery.select;
 import static java.time.Month.MARCH;
 
 public class ContactApp {
@@ -34,6 +35,9 @@ public class ContactApp {
             template.insert(contact);
 
             System.out.println(contact);
+
+            ColumnQuery query = select().from("Contact").where("_id").eq("Poliana").build();
+            template.select(query).forEach(System.out::println);
         }
     }
 }
