@@ -20,8 +20,8 @@ class Car {
     @Column
     private String color;
 
-    @Column
     @UDT("owner")
+    @Column
     private Owner owner;
 
     private Car(String plate, String city, String color, Owner owner) {
