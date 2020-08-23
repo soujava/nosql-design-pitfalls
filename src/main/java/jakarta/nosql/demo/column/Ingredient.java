@@ -3,6 +3,8 @@ package jakarta.nosql.demo.column;
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Entity;
 
+import java.util.Objects;
+
 @Entity
 class Ingredient {
 
@@ -18,5 +20,31 @@ class Ingredient {
     }
 
     public Ingredient() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Ingredient that = (Ingredient) o;
+        return Objects.equals(quantity, that.quantity) &&
+                Objects.equals(unit, that.unit);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(quantity, unit);
+    }
+
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "quantity=" + quantity +
+                ", unit='" + unit + '\'' +
+                '}';
     }
 }
