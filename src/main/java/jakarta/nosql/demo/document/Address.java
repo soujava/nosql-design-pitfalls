@@ -6,7 +6,7 @@ import jakarta.nosql.mapping.Entity;
 import java.util.Objects;
 
 @Entity
-class Address {
+public class Address {
 
     @Column
     private String city;

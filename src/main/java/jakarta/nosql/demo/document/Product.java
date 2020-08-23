@@ -7,7 +7,7 @@ import jakarta.nosql.mapping.Entity;
 import javax.money.MonetaryAmount;
 
 @Entity
-class Product {
+public class Product {
 
     @Column
     private String name;

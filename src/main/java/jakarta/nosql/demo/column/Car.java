@@ -9,7 +9,7 @@ import org.eclipse.jnosql.artemis.cassandra.column.UDT;
 import java.util.Objects;
 
 @Entity
-class Car {
+public class Car {
 
     @Id
     private String plate;

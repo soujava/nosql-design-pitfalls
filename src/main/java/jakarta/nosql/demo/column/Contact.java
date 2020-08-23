@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Objects;
 
 @Entity
-class Contact {
+public class Contact {
 
     @Id
     private String name;

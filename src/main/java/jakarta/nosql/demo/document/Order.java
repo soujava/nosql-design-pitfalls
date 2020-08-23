@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-class Order {
+public class Order {
 
     @Id
     private ObjectId id;

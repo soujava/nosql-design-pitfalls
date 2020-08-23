@@ -6,7 +6,7 @@ import jakarta.nosql.mapping.Entity;
 import java.util.Objects;
 
 @Entity
-class Owner {
+public class Owner {
 
     @Column
     private String name;

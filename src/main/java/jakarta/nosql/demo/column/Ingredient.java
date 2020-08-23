@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-class Ingredient {
+public class Ingredient {
 
     @Column
     private String name;
