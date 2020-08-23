@@ -1,4 +1,4 @@
-# Jakarta EE Meets NoSQL
+# NoSQL design pitfalls with Java
 
 ## Otavio Santana (@otaviojava)
 
