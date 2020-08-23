@@ -1,6 +1,7 @@
 package jakarta.nosql.demo.column;
 
 import jakarta.nosql.mapping.column.ColumnTemplate;
+import org.eclipse.jnosql.artemis.cassandra.column.CassandraTemplate;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
@@ -13,7 +14,7 @@ public class ContactApp {
     public static void main(String[] args) {
 
         try(SeContainer container = SeContainerInitializer.newInstance().initialize()) {
-            ColumnTemplate template = container.select(ColumnTemplate.class).get();
+            CassandraTemplate template = container.select(CassandraTemplate.class).get();
 
             Address address = Address.builder()
                     .withCity("Sao Paulo")

@@ -1,6 +1,7 @@
 package jakarta.nosql.demo.producer;
 
 import jakarta.nosql.column.ColumnFamilyManager;
+import org.eclipse.jnosql.diana.cassandra.column.CassandraColumnFamilyManager;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -17,11 +18,11 @@ class ColumnManagerProducer {
     private ColumnFamilyManager manager;
 
     @Produces
-    public ColumnFamilyManager getManagerCassandra() {
-        return manager;
+    public CassandraColumnFamilyManager getManagerCassandra() {
+        return (CassandraColumnFamilyManager) manager;
     }
 
-    public void destroy(@Disposes ColumnFamilyManager manager) {
+    public void destroy(@Disposes CassandraColumnFamilyManager manager) {
         manager.close();
     }
 

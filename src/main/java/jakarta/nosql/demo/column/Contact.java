@@ -54,6 +54,16 @@ class Contact {
                 Objects.requireNonNull(info, "info is required"));
     }
 
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", details=" + details +
+                ", address=" + address +
+                '}';
+    }
+
     public Address getAddress() {
         return address;
     }
