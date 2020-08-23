@@ -24,6 +24,7 @@ class Contact {
     private Map<String, String> details;
 
     @UDT("address")
+    @Column
     private Address address;
 
     Contact() {

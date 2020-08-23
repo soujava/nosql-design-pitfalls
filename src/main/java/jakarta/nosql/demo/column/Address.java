@@ -14,7 +14,7 @@ class Address {
     @Column
     private String country;
 
-    @Column
+    @Column("postalcode")
     private String postalCode;
 
     Address() {
