@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Entity
-public class Order {
+class Order {
 
     @Id
     private ObjectId id;
@@ -41,7 +41,7 @@ public class Order {
         this.items.add(Objects.requireNonNull(item, "item is required"));
     }
 
-    public List<Product> getItems() {
+    List<Product> getItems() {
         return items.stream().collect(Collectors.toUnmodifiableList());
     }
 

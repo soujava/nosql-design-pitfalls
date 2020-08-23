@@ -6,7 +6,7 @@ import jakarta.nosql.mapping.Entity;
 import java.util.Objects;
 
 @Entity
-public class Address {
+class Address {
 
     @Column
     private String city;
@@ -20,7 +20,7 @@ public class Address {
     Address() {
     }
 
-    Address(String city, String country, String postalCode) {
+    private Address(String city, String country, String postalCode) {
         this.city = city;
         this.country = country;
         this.postalCode = postalCode;
